@@ -9,11 +9,11 @@ console.log('Starting the server...');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://crypto-36b3e.web.app/']
-}));
-app.use(express.json());
 
+app.use(express.json());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://crypto-36b3e.web.app']
+}));
 //chart
 app.get('/crypto/:id/:timeframe', async (req, res) => {
   const { id, timeframe } = req.params;
@@ -93,6 +93,6 @@ app.get('/crypto/list', async (req, res) => {
   }
 });
 
-app.listen(PORT, '0.0.0.0', () => { // Bind to '0.0.0.0' for external access
+app.listen(PORT, '0.0.0.0', () => { 
   console.log(`Server running on port ${PORT}`);
 });
