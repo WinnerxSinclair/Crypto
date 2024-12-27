@@ -8,7 +8,20 @@ let props = defineProps({
 const chartOptions = ref(null);
 const chartSeries = ref(null);
 const metaData = ref(null);
-const highlighted = ref('1d')
+const highlighted = ref('1d');
+function formatter(num){
+  if(num > 1000) return 0;
+  if(num >= 1) return 2;
+  if(num >= .1) return 3;
+  if(num >= .01) return 4;
+  if(num >= .001) return 5;
+  if(num >= .0001){
+    return 6;
+  }else{
+    return 10;
+  }
+
+}
 const loadCryptoData = async (timeFrame = '1d') => {
   try {
     const data = await fetchCryptoData(props.crypto, timeFrame);
@@ -16,7 +29,7 @@ const loadCryptoData = async (timeFrame = '1d') => {
     // Map raw data points (timestamp and price)
     const chartData = data.prices.map(([time, price]) => ({
       x: new Date(time), // Full date object
-      y: price.toFixed(2), // Price value
+      y: price, // Price value
     }));
 
     // Prepare options
@@ -24,14 +37,23 @@ const loadCryptoData = async (timeFrame = '1d') => {
       chart: {
         id: 'crypto-chart',
         toolbar: { show: false },
-        height: 500,
           
       },
+      grid: {
+    padding: {
+      left: 18,
+      right: 0,
+      top: 0,
+      bottom: 0,
+    },
+  },
       yaxis: {
         opposite: true,
         labels: {
-          formatter: (val) => `$${val.toFixed(2)}`, // Add dollar sign without affecting the data
+          formatter: (val) => `$${val}`,
         },
+        
+        tickAmount: 6, 
       },
       xaxis: {
         type: 'datetime', // Handle x-axis as time
@@ -78,6 +100,11 @@ const loadCryptoData = async (timeFrame = '1d') => {
             });
           },
         },
+        y: {
+          formatter: (val) => {
+            return `$${val.toFixed(formatter(val))}`
+          }
+        }
       },
     };
 
@@ -108,7 +135,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex wrap gap m-center main-mw">
+  <br>
+  <div class="flex wrap gap m-center main-mw mt">
     <div v-if="metaData" class="info-container">
       <div class="flex">
         <img :src="metaData[0].image" alt="">

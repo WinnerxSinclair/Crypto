@@ -26,6 +26,7 @@ function showChart(id){
 
 <template>
   <div class="main-wrap m-center">
+    <h2>Top 100 Coins</h2>
     <div class="container " v-for="crypto in cryptos" :key="crypto.id" @click="showChart(crypto.id)">
       <div>{{ crypto.market_cap_rank }}</div>
       <div class="flex-c-c name-data">
