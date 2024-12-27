@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_BASE_URL = 'https://crypto-production-5a21.up.railway.app' || 'http://localhost:8080';
 
 export const fetchCryptoData = async (id, timeframe) => {
   try {

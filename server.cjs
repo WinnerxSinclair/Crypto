@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://crypto-production-5a21.up.railway.app']
+  origin: ['http://localhost:5173', 'https://crypto-36b3e.web.app/']
 }));
 app.use(express.json());
 
