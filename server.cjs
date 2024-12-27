@@ -7,7 +7,9 @@ console.log('Starting the server...');
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://crypto-production-5a21.up.railway.app']
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', (req, res) => {
