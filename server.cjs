@@ -13,10 +13,7 @@ app.use(cors({
   origin: ['http://localhost:5173', 'https://crypto-production-5a21.up.railway.app']
 }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html')); 
-});
+
 //chart
 app.get('/crypto/:id/:timeframe', async (req, res) => {
   const { id, timeframe } = req.params;
