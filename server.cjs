@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-const path = require('path');
+
 
 console.log('Starting the server...');
 
@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://crypto-36b3e.web.app']
+  origin: ['http://localhost:5173', 'https://crypto-36b3e.web.app','http://localhost:5174']
 }));
 //chart
 app.get('/crypto/:id/:timeframe', async (req, res) => {

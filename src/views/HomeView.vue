@@ -22,6 +22,20 @@ const cur = ref(null);
 function showChart(id){
   router.push({ path: `/${id}`})
 }
+
+function formatter(num){
+  if(num > 1000) return 0;
+  if(num >= .4) return 2;
+  if(num >= .1) return 3;
+  if(num >= .01) return 4;
+  if(num >= .001) return 5;
+  if(num >= .0001){
+    return 6;
+  }else{
+    return 10;
+  }
+
+}
 </script>
 
 <template>
@@ -36,7 +50,7 @@ function showChart(id){
         </div>
       </div>
       <div>${{ crypto.current_price.toLocaleString('en-US', {
-        minimumFractionDigits: 0, maximumFractionDigits: 20
+        minimumFractionDigits: 0, maximumFractionDigits: formatter(crypto.current_price)
       }) }}</div>
     </div>
   </div>
