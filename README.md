@@ -1,5 +1,24 @@
-# Vue 3 + Vite
+# Crypto Charts
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple, responsive crypto tracker that displays the top 100 cryptocurrencies and their interactive charts, data fetched from CoinGecko.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+📈 [Try it Live](https://crypto-36b3e.web.app/)
+
+---
+
+## 🚀 Tech Stack  
+- [Vue 3](https://vuejs.org/)  
+- [Vite](https://vitejs.dev/)  
+- [ApexCharts](https://apexcharts.com/docs/vue-charts/)  
+- [Axios](https://axios-http.com/)  
+- [Express](https://expressjs.com/)  
+- [CoinGecko API](https://www.coingecko.com/en/api)
+
+---
+
+## 🛠️ Installation
+
+```bash
+npm install
+npm run dev
+```
